@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { RecipeIngredient } from "./RecipeIngredient";
+import { RecipeSteps } from "./RecipeSteps";
 
 @Entity("recipes") // Nome da tabela no banco
 export class Recipe {
@@ -24,4 +25,7 @@ export class Recipe {
 
   @OneToMany(() => RecipeIngredient, ingredient => ingredient.recipe)
   ingredients: RecipeIngredient[];
+  
+  @OneToMany(() => RecipeSteps, step => step.recipe)
+  steps: RecipeSteps[];
 }
